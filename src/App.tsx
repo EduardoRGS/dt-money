@@ -2,6 +2,7 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
+import { Transactions } from './pages/Transactions'
 
 export function App() {
 
@@ -9,7 +10,7 @@ export function App() {
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
       
-         <h1>Hello Word!</h1>
+        <Transactions />
     </ThemeProvider>
 
   )
