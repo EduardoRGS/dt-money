@@ -1,6 +1,7 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { Transaction } from '../types/transaction'
 import { api } from '../lib/axios'
+import { createContext } from 'use-context-selector'
 
 interface CreateTransactionInput {
   description: string
@@ -18,6 +19,22 @@ interface TransactionContextType {
 interface TransactionsProviderProps {
   children: ReactNode
 }
+
+/**
+ * Importante!
+ * Por que que um componente renderiza?
+ * - Hooks changed (mudou estado, contexto, reducer)ç
+ * - Props changed (mudou propriedades)ç
+ * - Parent rerendered (componente pai renderizou)ç
+ * Qual o fluxo de renderização do react?
+ * 1. O React recria o HTML da interface daquele componente
+ * 2. Compara a versão do HTML recriada com a versão anterior
+ * 3. Se mudou algo, ele reescreve o HTML na tela
+ * Memo:
+ * 0. Hooks changed, Props changed (deep comparison)
+ * 0.1 Compara a versão anterior dos hooks e props
+ * 0.2 Se mudou algo, ele vai permitir a nova renderização
+ **/
 
 export const TransactionsContext = createContext({} as TransactionContextType)
 
